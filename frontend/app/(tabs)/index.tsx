@@ -37,7 +37,7 @@ export default function HomeScreen() {
         {/* Order Again — only if user has order history */}
         {hasOrderHistory && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Order Again</Text>
+            <Text style={styles.sectionTitle}>Ordenar de Nuevo</Text>
 
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.hScroll}>
               {usualItems.map((item) => (
@@ -68,7 +68,7 @@ export default function HomeScreen() {
                       style={styles.editSmallBtn}
                       onPress={() => setSelectedItem(item)}
                     >
-                      <Text style={styles.editSmallText}>Edit</Text>
+                      <Text style={styles.editSmallText}>Editar</Text>
                     </Pressable>
                   </View>
                 </View>
@@ -80,11 +80,11 @@ export default function HomeScreen() {
         {/* Featured Today */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Featured Today</Text>
 
+            <Text style={styles.sectionTitle}>Recomendación del Día</Text>
             <Link href="/menu" asChild>
               <Pressable style={styles.viewAllBtn}>
-                <Text style={styles.viewAllText}>View All</Text>
+                <Text style={styles.viewAllText}>Ver más</Text>
                 <Ionicons name="chevron-forward" size={16} color="#2C6FB7" />
               </Pressable>
             </Link>
@@ -166,7 +166,7 @@ export default function HomeScreen() {
           </View>
 
           <View style={styles.cartViewBtn}>
-            <Text style={styles.cartViewText}>View Cart</Text>
+            <Text style={styles.cartViewText}>Ver Carrito</Text>
           </View>
         </Pressable>
       )}

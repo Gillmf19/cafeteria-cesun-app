@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Text, Pressable, ScrollView, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-type OrderType = "upcoming" | "past";
+type OrderType = "En curso" | "Anteriores";
 
 type Order = {
   id: number;
@@ -20,7 +20,7 @@ type Order = {
 const orders: Order[] = [
   {
     id: 1,
-    type: "past",
+    type: "Anteriores",
     vendor: "Campus Coffee",
     date: "May 15, 2024",
     time: "2:30 PM",
@@ -29,20 +29,20 @@ const orders: Order[] = [
   },
   {
     id: 2,
-    type: "upcoming",
+    type: "En curso",
     vendor: "Pizza Palace",
-    date: "Today",
+    date: "Hoy",
     time: "12:45 PM",
     total: 18.99,
-    status: "Preparing",
+    status: "En preparación",
     estimatedTime: "10-15 mins",
     items: ["Margherita Pizza", "Caesar Salad"],
   },
   {
     id: 3,
-    type: "past",
+    type: "Anteriores",
     vendor: "Burger Bar",
-    date: "May 14, 2024",
+    date: "14 de Mayo 2024",
     time: "7:15 PM",
     total: 15.75,
     items: ["Classic Burger", "Fries", "Soda"],
@@ -50,7 +50,7 @@ const orders: Order[] = [
 ];
 
 export default function HistoryScreen() {
-  const [activeTab, setActiveTab] = useState<OrderType>("upcoming");
+  const [activeTab, setActiveTab] = useState<OrderType>("En curso");
 
   const filteredOrders = orders.filter((order) => order.type === activeTab);
 
@@ -58,27 +58,27 @@ export default function HistoryScreen() {
     <View style={styles.root}>
       {/* Page Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Order History</Text>
+        <Text style={styles.headerTitle}>Historial de Ordenes</Text>
       </View>
 
       {/* Segmented Control */}
       <View style={styles.segmentWrap}>
         <View style={styles.segment}>
           <Pressable
-            style={[styles.segBtn, activeTab === "upcoming" && styles.segBtnActive]}
-            onPress={() => setActiveTab("upcoming")}
+            style={[styles.segBtn, activeTab === "En curso" && styles.segBtnActive]}
+            onPress={() => setActiveTab("En curso")}
           >
-            <Text style={[styles.segText, activeTab === "upcoming" && styles.segTextActive]}>
-              Upcoming
+            <Text style={[styles.segText, activeTab === "En curso" && styles.segTextActive]}>
+              En curso
             </Text>
           </Pressable>
 
           <Pressable
-            style={[styles.segBtn, activeTab === "past" && styles.segBtnActive]}
-            onPress={() => setActiveTab("past")}
+            style={[styles.segBtn, activeTab === "Anteriores" && styles.segBtnActive]}
+            onPress={() => setActiveTab("Anteriores")}
           >
-            <Text style={[styles.segText, activeTab === "past" && styles.segTextActive]}>
-              Past
+            <Text style={[styles.segText, activeTab === "Anteriores" && styles.segTextActive]}>
+              Anteriores    
             </Text>
           </Pressable>
         </View>
@@ -88,14 +88,14 @@ export default function HistoryScreen() {
       <ScrollView contentContainerStyle={styles.list}>
         {filteredOrders.length === 0 ? (
           <View style={styles.emptyState}>
-            <Text style={styles.emptyText}>No {activeTab} orders</Text>
+            <Text style={styles.emptyText}> No encontramos ordenes {activeTab}</Text>
           </View>
         ) : (
           filteredOrders.map((order) => (
             <View key={order.id} style={styles.card}>
               {/* Icon */}
               <View style={styles.cardIcon}>
-                {order.type === "past" ? (
+                {order.type === "Anteriores" ? (
                   <Ionicons name="checkmark-circle" size={24} color="#10B981" />
                 ) : (
                   <Ionicons name="time-outline" size={24} color="#E67E22" />
@@ -116,7 +116,7 @@ export default function HistoryScreen() {
                   {order.items.join(", ")}
                 </Text>
 
-                {order.type === "upcoming" && order.status && (
+                {order.type === "En curso" && order.status && (
                   <View style={styles.statusBadge}>
                     <Text style={styles.statusText}>
                       {order.status} • {order.estimatedTime}

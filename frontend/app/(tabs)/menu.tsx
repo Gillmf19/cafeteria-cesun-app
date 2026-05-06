@@ -16,7 +16,7 @@ import { ItemModal } from "../../components/ItemModal";
 import type { MenuItem } from "../../context/CartContext";
 
 const categories = [
-  "All",
+  "Todo",
   "Pizza",
   "Burgers",
   "Sushi",
@@ -28,14 +28,14 @@ const categories = [
 ];
 
 export default function MenuScreen() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("Todo");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
   const { addToCart, totalItems, totalPrice } = useCart();
 
   const filteredItems = menuItems.filter((item) => {
     const matchesCategory =
-      selectedCategory === "All" || item.category === selectedCategory;
+      selectedCategory === "Todo" || item.category === selectedCategory;
     const matchesSearch = item.name
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -48,7 +48,7 @@ export default function MenuScreen() {
       <View style={styles.stickyHeader}>
         {/* Title */}
         <View style={styles.titleRow}>
-          <Text style={styles.title}>Full Menu</Text>
+          <Text style={styles.title}>Menú</Text>
         </View>
 
         {/* Search bar */}
@@ -56,7 +56,7 @@ export default function MenuScreen() {
           <Ionicons name="search-outline" size={20} color="#6B7280" />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search for food..."
+            placeholder="Qué se nos antoja?..."
             placeholderTextColor="#9CA3AF"
             value={searchQuery}
             onChangeText={setSearchQuery}
@@ -95,7 +95,7 @@ export default function MenuScreen() {
       {/* Grid */}
       {filteredItems.length === 0 ? (
         <View style={styles.emptyState}>
-          <Text style={styles.emptyText}>No items found</Text>
+          <Text style={styles.emptyText}>No encontramos lo que buscas</Text>
         </View>
       ) : (
         <FlatList
@@ -126,7 +126,7 @@ export default function MenuScreen() {
                     style={styles.addBtn}
                     onPress={() => addToCart({ itemId: item.id })}
                   >
-                    <Text style={styles.addBtnText}>Add +</Text>
+                    <Text style={styles.addBtnText}>Agregar +</Text>
                   </Pressable>
 
                   <Pressable
@@ -170,7 +170,7 @@ export default function MenuScreen() {
             </View>
           </View>
           <View style={styles.cartViewBtn}>
-            <Text style={styles.cartViewText}>View Cart</Text>
+            <Text style={styles.cartViewText}>Ver Carrito</Text>
           </View>
         </Pressable>
       )}

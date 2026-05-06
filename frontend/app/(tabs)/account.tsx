@@ -48,20 +48,20 @@ export default function AccountScreen() {
   return (
     <ScrollView style={styles.root} contentContainerStyle={styles.content}>
       {/* Page Header */}
-      <Text style={styles.pageTitle}>Settings</Text>
+      <Text style={styles.pageTitle}>Configuración</Text>
 
       {/* Account Section */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>ACCOUNT</Text>
+        <Text style={styles.sectionTitle}>CUENTA</Text>
         <View style={styles.group}>
           <SettingItem
             type="link"
-            label="Account Information"
+            label="Información de la cuenta"
             href="/account-info"
           />
           <SettingItem
             type="link"
-            label="Payment Methods"
+            label="Métodos de pago"
             href="/payment-methods"
           />
         </View>
@@ -69,11 +69,11 @@ export default function AccountScreen() {
 
       {/* Preferences Section */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>PREFERENCES</Text>
+        <Text style={styles.sectionTitle}>PREFERENCIAS</Text>
         <View style={styles.group}>
           <SettingItem
             type="toggle"
-            label="Notifications"
+            label="Notificaciones"
             value={notificationsEnabled}
             onChange={setNotificationsEnabled}
           />
@@ -82,12 +82,12 @@ export default function AccountScreen() {
 
       {/* Support Section */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>SUPPORT</Text>
+        <Text style={styles.sectionTitle}>SOPORTE TÉCNICO</Text>
         <View style={styles.group}>
-          <SettingItem type="link" label="Help Center" href="/help-center" />
+          <SettingItem type="link" label="Reportar Error" href="/help-center" />
           <SettingItem
             type="link"
-            label="Terms & Conditions"
+            label="Términos y Condiciones"
             href="/terms-conditions"
           />
         </View>
@@ -95,7 +95,7 @@ export default function AccountScreen() {
 
       {/* Log Out */}
       <Pressable style={styles.logoutBtn}>
-        <Text style={styles.logoutText}>Log Out</Text>
+        <Text style={styles.logoutText}>Cerrar sesión</Text>
       </Pressable>
     </ScrollView>
   );

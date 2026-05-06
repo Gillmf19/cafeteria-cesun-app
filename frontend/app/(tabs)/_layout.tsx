@@ -15,7 +15,7 @@ function AppHeader() {
     <View style={[styles.header, { paddingTop: insets.top }]}>
       <View style={styles.headerSpacer} />
 
-      <Text style={styles.headerTitle}>Campus Eats</Text>
+      <Text style={styles.headerTitle}>Cafetería Cesun</Text>
 
       <Link href="/cart" asChild>
         <Pressable style={styles.cartBtn} accessibilityLabel="View cart">
